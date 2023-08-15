@@ -9,28 +9,28 @@ import { ProductRegister } from "../pages/product/ProductRegister";
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: import.meta.env.VITE_URL_INDEX,
     element: <App />,
     errorElement: <NotFoundError />,
     children: [
       {
-        path: "/",
+        path: import.meta.env.VITE_URL_INDEX,
         element: <Index />,
       },
       {
-        path: "/products",
+        path: import.meta.env.VITE_URL_PRODUCTS,
         element: <Products />,
       },
       {
-        path: "/products/:productId",
+        path: import.meta.env.VITE_URL_PRODUCTS_DETAIL,
         element: <ProductDetail />,
       },
       {
-        path: "/products/cart",
+        path: import.meta.env.VITE_URL_PRODUCTS_CART,
         element: <ProductCart />,
       },
       {
-        path: "/products/register",
+        path: import.meta.env.VITE_URL_PRODUCTS_REGISTER,
         element: <ProductRegister />,
       },
     ],
