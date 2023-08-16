@@ -1,6 +1,6 @@
 import { SiReactos } from "react-icons/si";
 import { Link } from "react-router-dom";
-import { Navigator } from "../parts/navigator/Navigator";
+import { Navigator } from "../parts/navigator/Navigator.1";
 
 export const Header = () => {
   return (
