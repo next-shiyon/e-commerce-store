@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   AiOutlineShoppingCart,
   AiOutlineLogin,
@@ -7,16 +7,16 @@ import {
 import { HiOutlinePencilAlt } from "react-icons/hi";
 import {
   GoogleAuthProvider,
-  User,
   browserSessionPersistence,
   signInWithPopup,
-  signOut,
 } from "firebase/auth";
 import { auth } from "../../../firebase";
-import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { userState } from "../../../global/userState";
 
 export const Navigator = () => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user] = useRecoilState(userState);
+  const navigate = useNavigate();
 
   const onClickLogin = () => {
     auth.setPersistence(browserSessionPersistence).then(() => {
@@ -25,27 +25,19 @@ export const Navigator = () => {
         .then((result) => {
           console.table(result);
         })
-        .catch((error) => {
-          console.table(error);
+        .catch(() => {
+          navigate(import.meta.env.VITE_URL_ERROR_NOT_FOUND);
         });
     });
   };
 
   const onClickLogout = () => {
-    signOut(auth).then(() => {
-      setUser(null);
-    });
+    auth.signOut();
   };
-
-  useEffect(() => {
-    auth.onAuthStateChanged((currentUser) => {
-      currentUser && setUser(currentUser);
-    });
-  }, []);
 
   return (
     <nav>
-      <ul className=" bold flex flex-row items-center font-semibold max-sm:space-x-3 sm:space-x-3  lg:space-x-5">
+      <ul className=" bold flex flex-row items-center font-semibold max-sm:space-x-3 sm:space-x-3 lg:space-x-5">
         <li className="hover:text-slate-500">
           <Link to={import.meta.env.VITE_URL_PRODUCTS}>Products</Link>
         </li>
@@ -64,15 +56,12 @@ export const Navigator = () => {
           </li>
         )}
         <li className="hover:text-slate-500">
-          {user === null ? (
-            <button className="flex items-center" onClick={onClickLogin}>
-              <AiOutlineLogin />
-            </button>
-          ) : (
-            <button className="flex items-center" onClick={onClickLogout}>
-              <AiOutlineLogout />
-            </button>
-          )}
+          <button
+            className="flex items-center"
+            onClick={user === null ? onClickLogin : onClickLogout}
+          >
+            {user === null ? <AiOutlineLogin /> : <AiOutlineLogout />}
+          </button>
         </li>
       </ul>
     </nav>
