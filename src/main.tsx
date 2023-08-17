@@ -1,12 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./assets/styles/reset.scss";
-import { RouterProvider } from "react-router-dom";
-
-import { router } from "./router/router.tsx";
+import "./assets/styles/tailwind.config.css";
+import "./firebase.ts";
+import { RecoilRoot } from "recoil";
+import App from "./App.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
   </React.StrictMode>
 );

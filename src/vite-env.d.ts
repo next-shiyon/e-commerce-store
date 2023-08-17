@@ -11,4 +11,8 @@ interface ImportMetaEnv {
   readonly VITE_URL_PRODUCTS_DETAIL: string;
   readonly VITE_URL_PRODUCTS_CART: string;
   readonly VITE_URL_PRODUCTS_REGISTER: string;
+  readonly VITE_URL_ERROR_NOT_FOUND: string;
+
+  // APPLICATION
+  readonly VITE_ADMIN_EMAIL: string;
 }
