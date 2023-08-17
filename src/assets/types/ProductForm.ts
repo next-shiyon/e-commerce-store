@@ -1,5 +1,5 @@
 export type ProductForm = {
-  image: File;
+  image: string;
   title: string;
   price: string;
   category: string;
