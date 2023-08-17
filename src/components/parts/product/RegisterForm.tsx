@@ -1,33 +1,18 @@
 import { useForm } from "react-hook-form";
 import { ProductForm } from "../../../assets/types/ProductForm";
-import axios from "axios";
 import { ChangeEvent, useState } from "react";
 import { getDatabase, push, ref } from "firebase/database";
 import { useRecoilState } from "recoil";
 import { userState } from "../../../global/userState";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import { uploadImage } from "../../../utils/image";
 
 export const RegisterForm = () => {
   const { register, getValues, handleSubmit } = useForm<ProductForm>();
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [user] = useRecoilState(userState);
   const navigate = useNavigate();
-
-  const uploadImage = async () => {
-    const imageFile = getValues("image");
-
-    const formData = new FormData();
-    formData.append("file", imageFile[0]);
-    formData.append("upload_preset", "yqpnf8zd");
-    formData.append("cloud_name", "ddwqzra81");
-
-    return await axios
-      .post("https://api.cloudinary.com/v1_1/ddwqzra81/image/upload", formData)
-      .then((response) => {
-        return response.data.secure_url;
-      });
-  };
 
   const registProduct = (imageUrl: string) => {
     const db = getDatabase();
@@ -49,9 +34,9 @@ export const RegisterForm = () => {
 
   const chooseImageFile = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files !== null) {
-      const file = e.target.files[0];
+      const imageFile = e.target.files[0];
       const reader = new FileReader();
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(imageFile);
       reader.onloadend = () => {
         setImageSrc(reader.result as string);
       };
@@ -59,7 +44,7 @@ export const RegisterForm = () => {
   };
 
   const onClickSubmit = async () => {
-    const imageUrl = await uploadImage();
+    const imageUrl = await uploadImage(getValues("image"));
     registProduct(imageUrl);
   };
 
