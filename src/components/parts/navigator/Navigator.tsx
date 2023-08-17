@@ -48,7 +48,7 @@ export const Navigator = () => {
             </Link>
           </li>
         )}
-        {user && (
+        {user?.email === import.meta.env.VITE_ADMIN_EMAIL && (
           <li className="hover:text-slate-500">
             <Link to={import.meta.env.VITE_URL_PRODUCTS_REGISTER}>
               <HiOutlinePencilAlt />
