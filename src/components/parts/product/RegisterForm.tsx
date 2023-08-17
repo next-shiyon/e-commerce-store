@@ -10,6 +10,7 @@ import { uploadImage } from "../../../utils/image";
 
 export const RegisterForm = () => {
   const { register, getValues, handleSubmit } = useForm<ProductForm>();
+  const [submitProcessing, setSubmitProcessing] = useState(false);
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [user] = useRecoilState(userState);
   const navigate = useNavigate();
@@ -44,8 +45,12 @@ export const RegisterForm = () => {
   };
 
   const onClickSubmit = async () => {
+    if (submitProcessing) return;
+
+    setSubmitProcessing(true);
     const imageUrl = await uploadImage(getValues("image"));
     registProduct(imageUrl);
+    setSubmitProcessing(false);
   };
 
   return (
