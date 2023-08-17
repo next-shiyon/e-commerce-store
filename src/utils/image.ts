@@ -5,11 +5,14 @@ export const uploadImage = async (image: string) => {
 
   const formData = new FormData();
   formData.append("file", imageFile[0]);
-  formData.append("upload_preset", "yqpnf8zd");
-  formData.append("cloud_name", "ddwqzra81");
+  formData.append(
+    "upload_preset",
+    import.meta.env.VITE_VAR_CLOUDINARY_UPLOAD_PRESET
+  );
+  formData.append("cloud_name", import.meta.env.VITE_VAR_CLOUDINARY_CLOUD_NAME);
 
   return await axios
-    .post("https://api.cloudinary.com/v1_1/ddwqzra81/image/upload", formData)
+    .post(import.meta.env.VITE_URL_CLOUDINARY, formData)
     .then((response) => {
       return response.data.secure_url;
     });
