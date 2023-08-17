@@ -3,7 +3,7 @@ import { NotFoundError } from "./pages/errors/404";
 import { useRecoilState } from "recoil";
 import { userState } from "./global/userState";
 import { loginedRoute, logoutedRoute } from "./router/router";
-import { Layout } from "./components/layouts/layout";
+import { Layout } from "./components/layouts/Layout";
 
 function App() {
   const [user] = useRecoilState(userState);
