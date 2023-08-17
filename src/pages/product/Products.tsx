@@ -1,3 +1,8 @@
+import { ProductList } from "../../components/parts/product/ProductList";
 export const Products = () => {
-  return <div>THIS IS Products PAGE</div>;
+  return (
+    <div>
+      <ProductList />
+    </div>
+  );
 };
