@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { ProductDto } from "../../../assets/types/ProductDto";
 import { ChangeEvent, useEffect, useState } from "react";
-import { getDatabase, onValue, ref, set } from "firebase/database";
+import { getDatabase, onValue, push, ref } from "firebase/database";
 import { ProductOption } from "./ProductOption";
 import { useRecoilState } from "recoil";
 import { userState } from "../../../global/userState";
@@ -41,6 +41,7 @@ export const Product = () => {
       const productCartData = {
         uid: user.uid,
         pieces: 1,
+        id: product.id,
         image: product.image,
         title: product.title,
         price: product.price,
@@ -56,8 +57,9 @@ export const Product = () => {
     const db = getDatabase();
 
     user &&
-      set(ref(db, "cart/" + productCart.uid), {
+      push(ref(db, "cart/" + productCart.uid), {
         uid: productCart.uid,
+        id: productCart.id,
         pieces: productCart.pieces,
         image: productCart.image,
         title: productCart.title,
