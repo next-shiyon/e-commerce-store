@@ -78,9 +78,9 @@ export const Product = () => {
           <div className="p-5 sm:w-screen md:w-1/2">
             <img src={product.image} alt={product.title} />
           </div>
-          <div className="mt-5 border-t-2 p-5 sm:w-screen md:w-1/2">
-            <div>
-              <span className="mb-5 block font-light">
+          <div className="p-5 sm:w-screen md:w-1/2">
+            <div className="border-t-2 py-4">
+              <span className="mb-3 block text-sm font-light">
                 카테고리 : {product.category}
               </span>
               <div className="pb-6">
@@ -91,12 +91,12 @@ export const Product = () => {
                 options={product.option}
                 onChangeToggle={handleChangeToggle}
               />
-              <span className="mt-3 block text-3xl font-bold">
+              <span className="mt-5  block text-3xl font-bold">
                 $ {Number(product.price).toLocaleString("en-US")}
               </span>
             </div>
             <button
-              className="my-3 w-full rounded-lg bg-blue-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-500 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              className="my-2 w-full rounded-lg bg-blue-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-500 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               onClick={onClickSubmit}
             >
               ADD TO BAG

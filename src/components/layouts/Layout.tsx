@@ -32,7 +32,7 @@ export const Layout = () => {
   }, [setUser]);
 
   return (
-    <div className="m-auto flex min-w-min max-w-screen-lg flex-col p-3 ">
+    <div className="m-auto flex min-w-min max-w-screen-lg flex-col p-3 text-slate-900 ">
       <Header />
       <section>
         <Outlet />
