@@ -1,4 +1,4 @@
-export type ProductForm = {
+export type ProductFormDto = {
   image: string;
   title: string;
   price: string;
