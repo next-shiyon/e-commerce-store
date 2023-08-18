@@ -49,7 +49,11 @@ export const ProductCartList = () => {
         })}
 
       <div className="p-3 text-center text-2xl font-bold">
-        Total Price : $ {productList !== undefined ? getTotalPrice() : "0"}
+        {productList?.length !== 0 ? (
+          <span>Total Price : $ {getTotalPrice()}</span>
+        ) : (
+          <span>카트에 담긴 상품이 없습니다.</span>
+        )}
       </div>
     </>
   );
