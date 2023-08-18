@@ -18,7 +18,9 @@ export const ProductCard = ({
         />
 
         <h3 className="mt-3 font-semibold">{title}</h3>
-        <span className="text-xl font-bold">$ {price}</span>
+        <span className="text-xl font-bold">
+          $ {Number(price).toLocaleString("en-US")}
+        </span>
       </Link>
     </article>
   );

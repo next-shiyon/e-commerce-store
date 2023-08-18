@@ -32,31 +32,28 @@ export const Product = () => {
       return;
     }
 
-    if (product !== undefined) {
-      if (user !== null) {
-        const productCartData = {
-          uid: user.uid,
-          pieces: 1,
-          image: product.image,
-          title: product.title,
-          price: product.price,
-          category: product.category,
-          description: product.description,
-          option: product.option,
-        };
+    if (user === null) {
+      window.alert("로그인이 필요한 기능입니다.");
+      return;
+    }
 
-        registProductCart(productCartData);
-      }
+    if (product !== undefined) {
+      const productCartData = {
+        uid: user.uid,
+        pieces: 1,
+        image: product.image,
+        title: product.title,
+        price: product.price,
+        category: product.category,
+        description: product.description,
+        option: productOption,
+      };
+      registProductCart(productCartData);
     }
   };
 
   const registProductCart = (productCart: ProductCartDto) => {
     const db = getDatabase();
-
-    if (user === null) {
-      window.alert("로그인이 필요한 기능입니다.");
-      return;
-    }
 
     user &&
       set(ref(db, "cart/" + productCart.uid), {
@@ -77,18 +74,33 @@ export const Product = () => {
   return (
     <>
       {product && (
-        <div>
-          <img src={product.image} alt={product.title} />
-          <div>
-            <span>{product.category}</span>
-            <h1>{product.title}</h1>
-            <span>{product.description}</span>
-            <span>{product.price}</span>
-            <ProductOption
-              options={product.option}
-              onChangeToggle={handleChangeToggle}
-            />
-            <button onClick={onClickSubmit}>장바구니</button>
+        <div className="flex flex-col p-5 md:flex-row">
+          <div className="p-5 sm:w-screen md:w-1/2">
+            <img src={product.image} alt={product.title} />
+          </div>
+          <div className="mt-5 border-t-2 p-5 sm:w-screen md:w-1/2">
+            <div>
+              <span className="mb-5 block font-light">
+                카테고리 : {product.category}
+              </span>
+              <div className="pb-6">
+                <h1 className="py-2 text-2xl font-bold">{product.title}</h1>
+                <span className="block">{product.description}</span>
+              </div>
+              <ProductOption
+                options={product.option}
+                onChangeToggle={handleChangeToggle}
+              />
+              <span className="mt-3 block text-3xl font-bold">
+                $ {Number(product.price).toLocaleString("en-US")}
+              </span>
+            </div>
+            <button
+              className="my-3 w-full rounded-lg bg-blue-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-500 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              onClick={onClickSubmit}
+            >
+              ADD TO BAG
+            </button>
           </div>
         </div>
       )}
