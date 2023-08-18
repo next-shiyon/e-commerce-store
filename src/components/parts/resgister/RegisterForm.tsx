@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { ProductForm } from "../../../assets/types/ProductForm";
 import { ChangeEvent, useState } from "react";
-import { getDatabase, push, ref } from "firebase/database";
+import { getDatabase, ref, set } from "firebase/database";
 import { useRecoilState } from "recoil";
 import { userState } from "../../../global/userState";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +19,7 @@ export const RegisterForm = () => {
     const db = getDatabase();
     const uuid = uuidv4();
     user &&
-      push(ref(db, "products/"), {
+      set(ref(db, "products/" + uuid), {
         id: uuid,
         image: imageUrl,
         title: getValues("title"),
