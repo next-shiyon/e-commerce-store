@@ -1,11 +1,14 @@
+import { ChangeEvent } from "react";
+
 type Props = {
   options: string;
+  onChangeToggle: (e: ChangeEvent<HTMLSelectElement>) => void;
 };
 
-export const ProductOption = ({ options }: Props) => {
-  const splitedOptions = options.split(",");
+export const ProductOption = ({ options, onChangeToggle }: Props) => {
+  const splitedOptions = options.replace(" ", "").split(",");
   return (
-    <select>
+    <select onChange={onChangeToggle}>
       {splitedOptions.map((option) => {
         return (
           <option key={option} value={option}>
