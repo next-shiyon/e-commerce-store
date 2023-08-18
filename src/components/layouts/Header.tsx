@@ -4,7 +4,7 @@ import { Navigator } from "../parts/header/Navigator";
 
 export const Header = () => {
   return (
-    <header className="sticky top-0 z-50 flex items-center justify-between border-b-2 border-b-slate-300 bg-white p-4">
+    <header className="sticky top-0 z-50 flex items-center justify-between border-b-2 border-b-slate-300 bg-white p-4 ">
       <div>
         <Link
           to={import.meta.env.VITE_URL_INDEX}

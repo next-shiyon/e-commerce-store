@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { ProductForm } from "../../../assets/types/ProductForm";
+import { ProductFormDto } from "../../../assets/types/ProductFormDto";
 import { ChangeEvent, useState } from "react";
 import { getDatabase, ref, set } from "firebase/database";
 import { useRecoilState } from "recoil";
@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from "uuid";
 import { uploadImage } from "../../../utils/image";
 
 export const RegisterForm = () => {
-  const { register, getValues, handleSubmit } = useForm<ProductForm>();
+  const { register, getValues, handleSubmit } = useForm<ProductFormDto>();
   const [submitProcessing, setSubmitProcessing] = useState(false);
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [user] = useRecoilState(userState);
