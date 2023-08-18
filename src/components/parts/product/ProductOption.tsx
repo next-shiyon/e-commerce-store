@@ -8,10 +8,10 @@ type Props = {
 export const ProductOption = ({ options, onChangeToggle }: Props) => {
   const splitedOptions = options.replace(" ", "").split(",");
   return (
-    <div className="w-2/3">
+    <div>
       <label
         htmlFor="option"
-        className="mb-1 block text-sm font-medium text-gray-900 dark:text-white"
+        className="mb-1 block w-full text-sm font-medium text-gray-900 dark:text-white"
       >
         상품 옵션
       </label>
