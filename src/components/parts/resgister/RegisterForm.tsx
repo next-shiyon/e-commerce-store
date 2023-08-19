@@ -15,7 +15,7 @@ export const RegisterForm = () => {
   const [user] = useRecoilState(userState);
   const navigate = useNavigate();
 
-  const registProduct = (imageUrl: string) => {
+  const registProduct = (imageUrl: object) => {
     const db = getDatabase();
     const uuid = uuidv4();
     user &&
@@ -48,8 +48,8 @@ export const RegisterForm = () => {
     if (submitProcessing) return;
 
     setSubmitProcessing(true);
-    const imageUrl = await uploadImage(getValues("image"));
-    registProduct(imageUrl);
+    const image = await uploadImage(getValues("image"));
+    registProduct(image);
     setSubmitProcessing(false);
   };
 
