@@ -1,27 +1,37 @@
-# React + TypeScript + Vite
+# React + Typescript 練習用 EC サイトの実装
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 主要技術要素 ⚙️
 
-Currently, two official plugins are available:
+| 要素名           | バージョン |
+| ---------------- | ---------- |
+| react            | 18.2.0     |
+| react-dom        | 18.2.0     |
+| react-hook-form  | 7.45.4     |
+| react-router-dom | 6.15.0     |
+| recoil           | 0.7.7      |
+| axios            | 1.4.0      |
+| vite             | 4.4.5      |
+| firebase         | 10.1.0     |
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## アプリケーション起動方法 📄
 
-## Expanding the ESLint configuration
+```shell
+# プロジェクトクローン
+git clone git@github.com:next-shiyon/e-commerce-store.git
+cd e-commerce-store
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+# ノードモジュールインストール
+yarn
+# アプリケーション起動
+yarn run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## URL 設計 🏛️
+
+| URL                  | 画面名                   |
+| -------------------- | ------------------------ |
+| /                    | メインページ             |
+| /products            | 商品リストページ         |
+| /products/:productId | 商品詳細ページ           |
+| /products/cart       | ショッピングカートページ |
+| /products/register   | 商品登録ページ           |
