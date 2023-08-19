@@ -12,7 +12,12 @@ export const ProductCard = ({
   product: { id, title, price, image, pieces, option },
 }: Props) => {
   return (
-    <article className="m-5 flex w-auto justify-center overflow-hidden rounded-lg border border-gray-100 bg-white p-3 px-4 shadow-md">
+    <article className="relative m-5 flex w-auto  flex-col items-center justify-center overflow-hidden rounded-lg border border-gray-100 bg-white p-3 px-4 shadow-md">
+      {pieces && (
+        <button className="absolute right-2 top-3 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs text-white">
+          x
+        </button>
+      )}
       <Link to={`${import.meta.env.VITE_NAV_PRODUCTS_DETAIL}${id}`}>
         <img
           src={image}
@@ -24,7 +29,7 @@ export const ProductCard = ({
           {pieces && <span>Option : {option}</span>}
         </div>
         <div className="flex justify-between">
-          <span className="text-xl font-bold">
+          <span className=" text-xl font-bold">
             $ {Number(price).toLocaleString("en-US")}
           </span>
           {pieces && <span>Pieces : {pieces}</span>}

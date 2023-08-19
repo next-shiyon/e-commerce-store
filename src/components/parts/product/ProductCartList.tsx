@@ -50,7 +50,9 @@ export const ProductCartList = () => {
 
       <div className="p-3 text-center text-2xl font-bold">
         {productList?.length !== 0 ? (
-          <span>Total Price : $ {getTotalPrice()}</span>
+          <span className="my-2 block border-t-2 py-2">
+            Total Price : $ {getTotalPrice()}
+          </span>
         ) : (
           <span>카트에 담긴 상품이 없습니다.</span>
         )}
