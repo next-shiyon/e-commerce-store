@@ -14,6 +14,6 @@ export const uploadImage = async (image: string) => {
   return await axios
     .post(import.meta.env.VITE_URL_CLOUDINARY, formData)
     .then((response) => {
-      return response.data;
+      return response.data.secure_url;
     });
 };
