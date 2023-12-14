@@ -1,30 +1,30 @@
-# React + Typescript 학습용 EC 사이트 개발
+# 勉強目的で開発してみた EC サイト（React + Typescript）
 
-## 어플리케이션 실행 방법 📄
+## アプリケーション実行方法 📄
 
 ```shell
-# 프로젝트 클론
+# プロジェクトクローン
 git clone git@github.com:next-shiyon/e-commerce-store.git
 cd e-commerce-store
 
-# 모드 모듈 설치
+# ノードモジュールのインストール
 yarn
-# 어플리케이션 실행
+# アプリケーション実行
 yarn run dev
 ```
 
-## URL 설계 🏛️
+## URL 設計 🏛️
 
 | URL                  | 페이지                   |
 | -------------------- | ------------------------ |
-| /                    | 메인             |
-| /products            | 상품리스트         |
-| /products/:productId | 상품상세           |
-| /products/cart       | 쇼핑카트 |
-| /products/register   | 상품등록           |
+| /                    | メイン             |
+| /products            | 商品リスト         |
+| /products/:productId | 商品詳細           |
+| /products/cart       | 商品カート |
+| /products/register   | 商品登録           |
 
 
-## 주요 기술 요소 ⚙️
+## ライブラリ ⚙️
 
 | 要素名           | バージョン |
 | ---------------- | ---------- |
